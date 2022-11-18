@@ -10,11 +10,12 @@ import AppButton from './app/components/AppButton';
 import Card from './app/components/Card';
 import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
+import Camera from './app/components/Camera';
 
 export default function App() {
 
 
-  return <MessagesScreen />
+  return <Camera />
 }
 
 const styles = StyleSheet.create({

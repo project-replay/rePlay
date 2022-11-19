@@ -14,9 +14,6 @@ app.use('/api/listings', listingController);
 const userController = require('./controllers/userController');
 app.use('/api/users', userController);
 
-// const authController = require('./controllers/authController');
-// app.use('/api/auth', authController);
-
 // Redirect any requests to the homepage to listings API
 app.get('/', (req, res) => {
 	res.redirect('/api/listings');

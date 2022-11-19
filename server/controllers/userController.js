@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const { createUserToken } = require('../middleware/auth');
+// const { createUserToken } = require('../middleware/auth');
 
 // CREATE: Register user
 // POST /api/register
@@ -21,16 +21,16 @@ router.post('/register', async (req, res) => {
 
 // LOGIN: Sign in user
 // POST: /api/signin
-router.post('/signin', async (req, res) => {
-	try {
-		const logIn = await User.findOne({ username: req.body.username })
-			.then((user) => createUserToken(req, user))
-			.then((token) => res.json({ token }))
-			.catch(next);
-	} catch (error) {
-		console.log('Something went wrong...\n' + error);
-		return res.sendStatus(400);
-	}
-});
+// router.post('/signin', async (req, res) => {
+// 	try {
+// 		const logIn = await User.findOne({ username: req.body.username })
+// 			.then((user) => createUserToken(req, user))
+// 			.then((token) => res.json({ token }))
+// 			.catch(next);
+// 	} catch (error) {
+// 		console.log('Something went wrong...\n' + error);
+// 		return res.sendStatus(400);
+// 	}
+// });
 
 module.exports = router;

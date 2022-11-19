@@ -25,20 +25,19 @@ app.all('*', (req, res) => {
 	res.redirect('/');
 });
 
-// Connect to Mongo
-const mongoURI = process.env.MONGO_URI;
-const db = mongoose.connection;
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI);
 
-mongoose.connect(mongoURI);
+const db = mongoose.connection;
 
 db.on('error', (err) => console.log(err.message + '- Is MongoDB not running?'));
 db.on('disconnected', () => console.log('MongoDB disconnected'));
 db.on('open', () => {
-	console.log('✅ Mongo connection made!');
+	console.log('✅ MongoDB connection made!');
 });
 
 // Start server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
-	console.log(`✅ Server started on port ${port}`);
+	console.log(`✅ Server started on Port ${port}`);
 });

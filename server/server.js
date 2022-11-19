@@ -1,6 +1,8 @@
+require('dotenv').config({ path: '.env' });
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 // Middleware
 app.use(express.json());
@@ -21,6 +23,18 @@ app.get('/', (req, res) => {
 
 app.all('*', (req, res) => {
 	res.redirect('/');
+});
+
+// Connect to Mongo
+const mongoURI = process.env.MONGO_URI;
+const db = mongoose.connection;
+
+mongoose.connect(mongoURI);
+
+db.on('error', (err) => console.log(err.message + '- Is MongoDB not running?'));
+db.on('disconnected', () => console.log('MongoDB disconnected'));
+db.on('open', () => {
+	console.log('✅ Mongo connection made!');
 });
 
 // Start server

@@ -15,7 +15,7 @@ import Camera from './app/components/Camera';
 export default function App() {
 
 
-  return <Camera />
+  return <MessagesScreen />
 }
 
 const styles = StyleSheet.create({

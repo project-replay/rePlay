@@ -27,7 +27,7 @@ app.all('*', (req, res) => {
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI);
-
+console.log(process.env.MONGO_URI)
 const db = mongoose.connection;
 
 db.on('error', (err) => console.log(err.message + '- Is MongoDB not running?'));

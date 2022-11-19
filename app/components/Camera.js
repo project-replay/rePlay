@@ -6,17 +6,20 @@ import {
 	SafeAreaView,
 	Button,
 	Image,
+	TouchableOpacity,
 } from 'react-native';
 import { useEffect, useRef, useState } from 'react';
 import { Camera } from 'expo-camera';
 import { shareAsync } from 'expo-sharing';
 import * as MediaLibrary from 'expo-media-library';
+import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
 export default function App() {
-	let cameraRef = useRef();
+	const cameraRef = useRef();
 	const [hasCameraPermission, setHasCameraPermission] = useState();
 	const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
 	const [photo, setPhoto] = useState();
+	const [isPreview, setIsPreview] = useState(false);
 
 	useEffect(() => {
 		(async () => {
@@ -33,7 +36,7 @@ export default function App() {
 	} else if (!hasCameraPermission) {
 		return (
 			<Text>
-				Permission for camera not granted. Please change this in settings.
+				Permission for camera not granted. Please change this in Settings.
 			</Text>
 		);
 	}
@@ -50,13 +53,14 @@ export default function App() {
 	};
 
 	if (photo) {
-		let sharePic = () => {
-			shareAsync(photo.uri).then(() => {
-				setPhoto(undefined);
-			});
-		};
+		// const sharePic = () => {
+		// 	shareAsync(photo.uri).then(() => {
+		// 		setPhoto(undefined);
+		// 	});
+		// };
 
-		let savePhoto = () => {
+		const savePhoto = () => {
+			// Save to Cloudinary
 			let base64Img = `data:image/jpg;base64,${photo.base64}`;
 			let apiUrl = 'https://api.cloudinary.com/v1_1/dwppzi7rk/image/upload';
 			let data = {
@@ -74,13 +78,14 @@ export default function App() {
 				.then(async (response) => {
 					let data = await response.json();
 					if (data.secure_url) {
-						alert('Upload successful');
+						alert('Upload successful!');
 					}
 				})
 				.catch((err) => {
 					alert('Cannot upload');
 				});
 
+			// Save to phone
 			MediaLibrary.saveToLibraryAsync(photo.uri).then(() => {
 				setPhoto(undefined);
 			});
@@ -92,7 +97,7 @@ export default function App() {
 					style={styles.preview}
 					source={{ uri: 'data:image/jpg;base64,' + photo.base64 }}
 				/>
-				<Button title='Share' onPress={sharePic} />
+				{/* <Button title='Share' onPress={sharePic} /> */}
 				{hasMediaLibraryPermission ? (
 					<Button title='Save' onPress={savePhoto} />
 				) : undefined}
@@ -103,23 +108,27 @@ export default function App() {
 
 	return (
 		<Camera style={styles.container} ref={cameraRef}>
-			<View style={styles.buttonContainer}>
-				<Button title='Take Pic' onPress={takePic} />
-			</View>
+			<TouchableOpacity style={styles.cameraButtonContainer} onPress={takePic}>
+				<Ionicons name='ios-radio-button-on' size={75} color='white' />
+			</TouchableOpacity>
 			<StatusBar style='auto' />
 		</Camera>
 	);
 }
 
 const styles = StyleSheet.create({
+	buttonContainer: {
+		backgroundColor: '#fff',
+		alignSelf: 'flex-end',
+	},
+	cameraButtonContainer: {
+		position: 'absolute',
+		bottom: 75,
+	},
 	container: {
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center',
-	},
-	buttonContainer: {
-		backgroundColor: '#fff',
-		alignSelf: 'flex-end',
 	},
 	preview: {
 		alignSelf: 'stretch',

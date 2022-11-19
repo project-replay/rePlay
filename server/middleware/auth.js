@@ -42,7 +42,8 @@ const createUserToken = (req, user) => {
 		throw error;
 	}
 
-	return jwt.sign({ id: user._id }, secret, { expiresIn: 36000 });
+	// Token expires in 2 days
+	return jwt.sign({ id: user._id }, secret, { expiresIn: 172800 });
 };
 
 module.exports = {

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Listing = require('../models/Listing');
-// const { requireToken } = require('../middleware/auth');
+const { requireToken } = require('../middleware/auth');
 
 // INDEX: Get all listings
 // GET /api/listings
@@ -32,8 +32,8 @@ router.get('/:id', async (req, res) => {
 
 // CREATE: Add new listing
 // POST /api/listings
-// ** Require token
-router.post('/', async (req, res) => {
+// ** Only allowed for registered users
+router.post('/', requireToken, async (req, res) => {
 	try {
 		const newListing = await Listing.create(req.body);
 		if (newListing) {
@@ -49,8 +49,8 @@ router.post('/', async (req, res) => {
 
 // UPDATE: Update listing by id
 // PUT /api/listings/:id
-// ** Require token
-router.put('/:id', async (req, res) => {
+// ** Only allowed for registered users
+router.put('/:id', requireToken, async (req, res) => {
 	try {
 		const updatedListing = await Listing.findByIdAndUpdate(
 			req.params.id,
@@ -68,8 +68,8 @@ router.put('/:id', async (req, res) => {
 
 // DELETE: Remove listing by id
 // DELETE /api/listings/:id
-// ** Require token
-router.delete('/:id', async (req, res, next) => {
+// ** Only allowed for registered users
+router.delete('/:id', requireToken, async (req, res, next) => {
 	try {
 		const deletedListing = await Listing.findByIdAndDelete(req.params.id);
 		if (deletedListing) {

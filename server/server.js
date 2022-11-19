@@ -16,13 +16,8 @@ app.use('/api/listings', listingController);
 const userController = require('./controllers/userController');
 app.use('/api/users', userController);
 
-// Redirect any requests to the homepage to listings API
-app.get('/', (req, res) => {
-	res.redirect('/api/listings');
-});
-
 app.all('*', (req, res) => {
-	res.redirect('/');
+	res.redirect('/api/listings');
 });
 
 // Connect to MongoDB

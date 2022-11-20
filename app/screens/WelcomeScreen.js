@@ -1,61 +1,148 @@
 import React from 'react';
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import AppButton from '../components/AppButton';
-import AppText from '../components/AppText';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import {
+	Image,
+	SafeAreaView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+	View,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../config/colors';
 
-function WelcomeScreen(props) {
-    return (
-        <SafeAreaView style={{
-            flex: 1,
-            backgroundColor: colors.white,
-            alignItems: "center",
-           }}>
-            <Text style={styles.header}>rePlay</Text>
-            <MaterialCommunityIcons name="teddy-bear" size={300} color="dodgerblue" />
-            <View style={styles.body}>
-            <AppText>Give your items a second chance</AppText>
-            </View>
-            <AppButton title="Login" onPress={() => console.log("Tapped Login")}></AppButton>
-            <AppText>-------------------- or --------------------</AppText>
-            <AppButton title="Sign Up" onPress={() => console.log("Tapped Sign Up")}></AppButton>
-          </SafeAreaView>
-    );
+// Components:
+import AppButton from '../components/AppButton';
+import AppText from '../components/AppText';
+
+// Screens:
+import ListingDetailsScreen from './ListingDetailsScreen';
+
+// SVG Images:
+import ReplayLogo from '../assets/svg/ReplayLogo';
+import Train from '../assets/svg/Train';
+import MovingTruck from '../assets/svg/MovingTruck';
+import StopSign from '../assets/svg/StopSign';
+import BabyProducts from '../assets/svg/BabyProducts';
+import Stroller from '../assets/svg/Stroller';
+import BabyClothes from '../assets/svg/BabyClothes';
+import BabyBlocks from '../assets/svg/BabyBlocks';
+
+function WelcomeScreen() {
+	// const navigation = useNavigation();
+
+	// const navigate = (page) => {
+	// 	navigation.navigate(page);
+	// };
+
+	return (
+		<SafeAreaView style={styles.container}>
+			<ReplayLogo />
+			<Train />
+			{/* <MovingTruck />
+			<StopSign />
+			<BabyProducts />
+			<Stroller />
+			<BabyClothes /> 
+			<BabyBlocks /> */}
+
+			<View>
+				<AppText>Give your items a{'\n'}second chance</AppText>
+			</View>
+
+			<AppButton
+				title={'Continue with Google'}
+				onPress={() => {}}
+				bgColor={'white'}
+				textColor={'black'}
+				hasBorder
+			/>
+
+			<View style={styles.buttonContainer}>
+				<TouchableOpacity style={styles.button} onPress={() => {}}>
+					<Text style={styles.text} Text>
+						Continue with Google
+					</Text>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.button} onPress={() => {}}>
+					<Text style={styles.text} Text>
+						Continue with Facebook
+					</Text>
+				</TouchableOpacity>
+
+				<View
+					style={{
+						flexDirection: 'row',
+						alignItems: 'center',
+						width: '100%',
+						margin: 5,
+					}}>
+					<View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
+					<View>
+						<Text style={{ width: 50, textAlign: 'center' }}>or</Text>
+					</View>
+					<View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
+				</View>
+
+				<TouchableOpacity
+					style={styles.button}
+					onPress={() => navigation.navigate('Register')}>
+					<Text style={styles.text}>Create an Account</Text>
+				</TouchableOpacity>
+				<View style={styles.loginContainer}>
+					<Text style={styles.text}>Already have an account? </Text>
+					<TouchableOpacity onPress={() => navigation.navigate('Login')}>
+						<Text style={styles.loginText} Text>
+							Log in here
+						</Text>
+					</TouchableOpacity>
+				</View>
+				<TouchableOpacity onPress={() => navigation.navigate('Home')}>
+					<Text style={styles.text} Text>
+						Continue as guest
+					</Text>
+				</TouchableOpacity>
+			</View>
+		</SafeAreaView>
+	);
 }
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        justifyContent: "flex-end",
-        alignItems: "center"
-    },
-    registerButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: "#4ecdc4",
-    },
-    logo: {
-        width: 100,
-        height: 100,
-    },
-    logoContainer: {
-        position: 'absolute',
-        top: 70,
-        alignItems: "center"
-    },
-    header: {
-        fontSize: 60,
-        fontWeight: "900",
-        textAlign: "center",
-        color: "dodgerblue",
-        paddingBottom: 60,
-      },
-      body: {
-        width: "60%",
-        paddingHorizontal: 20,
-        paddingTop: 30,
-        paddingBottom: 20,
-      },
+	container: {
+		flex: 1,
+		justifyContent: 'center',
+		backgroundColor: colors.light,
+		alignItems: 'center',
+	},
+	ssoButton: {
+		color: colors.black,
+	},
+	button: {
+		alignItems: 'center',
+		width: '100%',
+		margin: 5,
+		padding: 15,
+		backgroundColor: colors.primary,
+		borderRadius: 25,
+	},
+	buttonContainer: {
+		justifyContent: 'center',
+		alignItems: 'center',
+		width: '60%',
+		marginTop: 40,
+	},
+	loginText: {
+		color: colors.primary,
+		fontWeight: '500',
+		fontSize: 14,
+	},
+	loginContainer: {
+		flexDirection: 'row',
+		marginTop: 15,
+		marginBottom: 15,
+	},
+	text: { color: colors.black, fontWeight: '500', fontSize: 14 },
+	title: { marginBottom: 5, fontSize: 20, fontWeight: '700' },
+	titleBear: { fontSize: 200 },
 });
 
 export default WelcomeScreen;

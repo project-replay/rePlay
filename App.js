@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, SafeAreaView, View} from 'react-native';
+import { StyleSheet, Text, SafeAreaView, View } from 'react-native';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/components/AppText';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from './app/config/colors';
 import AppButton from './app/components/AppButton';
 import Card from './app/components/Card';
@@ -16,11 +16,13 @@ import ListItem from './app/components/ListItem';
 import MyAccountScreen from './app/screens/AccountScreen';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
+import LoginScreen from './app/screens/LoginScreen'
 
 export default function App() {
 
 
-   return <ListingsScreen />
+  //  return <ListingsScreen />
+  return <LoginScreen />
 }
 
 const styles = StyleSheet.create({

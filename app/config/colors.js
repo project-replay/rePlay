@@ -3,7 +3,7 @@ export default {
 	secondary: '#a2a067', // olive
 	black: '#434343', // soft black
 	white: '#ffffff', 
-	medium: '#6e6969',
+	medium: '#6e6969', // text blue
 	light: '#fef9f4', // nimbus
 	danger: '#ff5252',
 };

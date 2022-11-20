@@ -1,6 +1,5 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import colors from '../config/colors';
 
@@ -21,11 +20,6 @@ import Stroller from '../assets/svg/Stroller';
 import Train from '../assets/svg/Train';
 
 function WelcomeScreen() {
-	const navigation = useNavigation();
-
-	const navigate = (page) => {
-		navigation.navigate(page);
-	};
 
 	return (
 		<SafeAreaView style={styles.container}>
@@ -99,7 +93,6 @@ function WelcomeScreen() {
 
 			<AppButton
 				title={'Create Your Account'}
-				// onPress={navigate('ViewImageScreen')}
 				bgColor={'primary'}
 				textColor={'light'}
 				fontSize={20}

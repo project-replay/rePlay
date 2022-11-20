@@ -1,43 +1,47 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import AppText from './AppText';
 import colors from '../config/colors';
 
 function AppButton({
+	component, // Namely for images and vector icons
 	title,
 	onPress,
-	bgColor = 'primary',
-	textColor = 'light',
+	width = '80%',
+	bgColor,
+	textColor,
+	fontSize,
 	hasBorder = false,
+	borderRadius = 30,
 }) {
 	return (
 		<TouchableOpacity
 			style={[
 				styles.button,
+				{ width: width },
 				{ backgroundColor: colors[bgColor] },
 				hasBorder && styles.border,
+				{ borderRadius: borderRadius },
 			]}
 			onPress={onPress}>
-			<Text style={([styles.text], { color: colors[textColor] })}>{title}</Text>
+			{component}
+			<AppText text={title} fontSize={fontSize} textColor={textColor} />
 		</TouchableOpacity>
 	);
 }
 
 const styles = StyleSheet.create({
 	button: {
-		backgroundColor: colors.primary,
-		border: 'none',
-		borderRadius: 25,
+		display: 'flex',
+		flexDirection: 'row',
+		flexWrap: 'nowrap',
 		justifyContent: 'center',
 		alignItems: 'center',
-		padding: 5,
-		margin: 10,
 		width: '80%',
-	},
-	text: {
-		color: colors.white,
-		fontSize: 18,
-		textTransform: 'uppercase',
-		fontWeight: 'bold',
+		margin: 10,
+		padding: 12,
+		borderRadius: 30,
+		backgroundColor: colors.primary,
 	},
 	border: {
 		borderColor: colors.primary,

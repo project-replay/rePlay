@@ -1,148 +1,151 @@
 import React from 'react';
-import {
-	Image,
-	SafeAreaView,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-} from 'react-native';
+import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import Carousel, { Pagination } from 'react-native-snap-carousel';
 import colors from '../config/colors';
 
 // Components:
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
 
-// Screens:
-import ListingDetailsScreen from './ListingDetailsScreen';
-
 // SVG Images:
+import BabyBlocks from '../assets/svg/BabyBlocks';
+import BabyClothes from '../assets/svg/BabyClothes';
+import BabyProducts from '../assets/svg/BabyProducts';
+import FacebookIcon from '../assets/svg/FacebookIcon';
+import GoogleIcon from '../assets/svg/GoogleIcon';
 import ReplayLogo from '../assets/svg/ReplayLogo';
-import Train from '../assets/svg/Train';
 import MovingTruck from '../assets/svg/MovingTruck';
 import StopSign from '../assets/svg/StopSign';
-import BabyProducts from '../assets/svg/BabyProducts';
 import Stroller from '../assets/svg/Stroller';
-import BabyClothes from '../assets/svg/BabyClothes';
-import BabyBlocks from '../assets/svg/BabyBlocks';
+import Train from '../assets/svg/Train';
 
 function WelcomeScreen() {
-	// const navigation = useNavigation();
+	const navigation = useNavigation();
 
-	// const navigate = (page) => {
-	// 	navigation.navigate(page);
-	// };
+	const navigate = (page) => {
+		navigation.navigate(page);
+	};
 
 	return (
 		<SafeAreaView style={styles.container}>
-			<ReplayLogo />
-			<Train />
-			{/* <MovingTruck />
-			<StopSign />
-			<BabyProducts />
-			<Stroller />
-			<BabyClothes /> 
-			<BabyBlocks /> */}
-
 			<View>
-				<AppText>Give your items a{'\n'}second chance</AppText>
+				<ReplayLogo />
+				<Train />
+				{/* <MovingTruck />
+				<StopSign />
+				<BabyProducts />
+				<Stroller />
+				<BabyClothes />
+				<BabyBlocks /> */}
 			</View>
 
+			<TouchableOpacity style={styles.arrow} onPress={() => {}}>
+				<AntDesign name='arrowright' size={25} color={colors.primary} />
+			</TouchableOpacity>
+
+			<AppText
+				text={'Give your items a\nsecond chance'}
+				paddingTop={35}
+				fontSize={20}
+				textColor={'medium'}
+			/>
+
 			<AppButton
+				// component={<GoogleIcon />}
 				title={'Continue with Google'}
 				onPress={() => {}}
 				bgColor={'white'}
 				textColor={'black'}
+				fontSize={20}
 				hasBorder
 			/>
 
-			<View style={styles.buttonContainer}>
-				<TouchableOpacity style={styles.button} onPress={() => {}}>
-					<Text style={styles.text} Text>
-						Continue with Google
-					</Text>
-				</TouchableOpacity>
-				<TouchableOpacity style={styles.button} onPress={() => {}}>
-					<Text style={styles.text} Text>
-						Continue with Facebook
-					</Text>
-				</TouchableOpacity>
+			<AppButton
+				// component={<FacebookIcon />}
+				title={'Continue with Facebook'}
+				onPress={() => {}}
+				bgColor={'white'}
+				textColor={'black'}
+				hasBorder
+				fontSize={20}
+			/>
 
+			{/* The "----- or -----" component */}
+			<View
+				style={{
+					flexDirection: 'row',
+					alignItems: 'center',
+					width: '90%',
+				}}>
 				<View
 					style={{
-						flexDirection: 'row',
-						alignItems: 'center',
-						width: '100%',
-						margin: 5,
-					}}>
-					<View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
-					<View>
-						<Text style={{ width: 50, textAlign: 'center' }}>or</Text>
-					</View>
-					<View style={{ flex: 1, height: 1, backgroundColor: 'black' }} />
-				</View>
+						flex: 1,
+						marginRight: 10,
+						height: 1,
+						backgroundColor: colors.primary,
+					}}
+				/>
+				<AppText text={'or'} fontSize={20} textColor={'medium'} />
+				<View
+					style={{
+						flex: 1,
+						marginLeft: 10,
+						height: 1,
+						backgroundColor: colors.primary,
+					}}
+				/>
+			</View>
 
-				<TouchableOpacity
-					style={styles.button}
-					onPress={() => navigation.navigate('Register')}>
-					<Text style={styles.text}>Create an Account</Text>
-				</TouchableOpacity>
-				<View style={styles.loginContainer}>
-					<Text style={styles.text}>Already have an account? </Text>
-					<TouchableOpacity onPress={() => navigation.navigate('Login')}>
-						<Text style={styles.loginText} Text>
-							Log in here
-						</Text>
-					</TouchableOpacity>
-				</View>
-				<TouchableOpacity onPress={() => navigation.navigate('Home')}>
-					<Text style={styles.text} Text>
-						Continue as guest
-					</Text>
+			<AppButton
+				title={'Create Your Account'}
+				// onPress={navigate('ViewImageScreen')}
+				bgColor={'primary'}
+				textColor={'light'}
+				fontSize={20}
+			/>
+
+			<View style={styles.loginContainer}>
+				<AppText
+					text={'Already have an account? '}
+					paddingTop={20}
+					fontSize={17}
+					textColor={'medium'}
+				/>
+				<TouchableOpacity style={[styles.login]} onPress={() => {}}>
+					<AppText
+						text={'Log in here'}
+						paddingTop={20}
+						fontSize={17}
+						textColor={'primary'}
+					/>
 				</TouchableOpacity>
 			</View>
+
+			<TouchableOpacity onPress={() => {}}>
+				<AppText
+					text={'Continue as guest'}
+					paddingTop={20}
+					fontSize={17}
+					textColor={'medium'}
+				/>
+			</TouchableOpacity>
 		</SafeAreaView>
 	);
 }
+
 const styles = StyleSheet.create({
+	arrow: { position: 'absolute', alignSelf: 'flex-end', top: 300, right: 50 },
 	container: {
 		flex: 1,
 		justifyContent: 'center',
 		backgroundColor: colors.light,
 		alignItems: 'center',
 	},
-	ssoButton: {
-		color: colors.black,
-	},
-	button: {
-		alignItems: 'center',
-		width: '100%',
-		margin: 5,
-		padding: 15,
-		backgroundColor: colors.primary,
-		borderRadius: 25,
-	},
-	buttonContainer: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		width: '60%',
-		marginTop: 40,
-	},
-	loginText: {
-		color: colors.primary,
-		fontWeight: '500',
-		fontSize: 14,
-	},
 	loginContainer: {
 		flexDirection: 'row',
-		marginTop: 15,
-		marginBottom: 15,
 	},
-	text: { color: colors.black, fontWeight: '500', fontSize: 14 },
-	title: { marginBottom: 5, fontSize: 20, fontWeight: '700' },
-	titleBear: { fontSize: 200 },
 });
 
 export default WelcomeScreen;

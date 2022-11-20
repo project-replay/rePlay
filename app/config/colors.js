@@ -1,9 +1,9 @@
 export default {
-    primary: 'dodgerblue',
-    secondary: '#4ecdc4',
-    black: "#000",
-    white: "#fff",
-    medium: "#6e6969",
-    light: "#f8f4f4",
-    danger: "#ff5252"
-}
+	primary: '#e37656', // coral
+	secondary: '#a2a067', // olive
+	black: '#434343', // soft black
+	white: '#ffffff', 
+	medium: '#6e6969',
+	light: '#fef9f4', // nimbus
+	danger: '#ff5252',
+};

@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		padding: 5,
-		margin: 10,
-		width: '80%',
+		width: '100%',
 	},
 	text: {
 		color: colors.white,

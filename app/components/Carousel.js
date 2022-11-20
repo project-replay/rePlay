@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Text, View, FlatList, Image } from 'react-native';
 
 // PNG images
-import BabyClothes from '../assets/welcome-screen/png/baby-clothes.png';
-import Blocks from '../assets/welcome-screen/png/blocks.png';
-import BoxOfItems from '../assets/welcome-screen/png/box-of-items.png';
-import Stroller from '../assets/welcome-screen/png/stroller.png';
-import Train from '../assets/welcome-screen/png/train.png';
-import Truck from '../assets/welcome-screen/png/truck.png';
+import BabyClothes from '../assets/png/baby-clothes.png';
+import Blocks from '../assets/png/blocks.png';
+import BoxOfItems from '../assets/png/box-of-items.png';
+import Stroller from '../assets/png/stroller.png';
+import Train from '../assets/png/train.png';
+import Truck from '../assets/png/truck.png';
 
 const data = [
 	{

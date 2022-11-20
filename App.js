@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, SafeAreaView, View, Switch} from 'react-native';
+import { StyleSheet, Text, SafeAreaView, View, Switch } from 'react-native';
 import ViewImageScreen from './app/screens/ViewImageScreen';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AppText from './app/components/AppText';
-import {MaterialCommunityIcons} from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from './app/config/colors';
 import AppButton from './app/components/AppButton';
 import Card from './app/components/Card';
@@ -21,18 +21,15 @@ import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
 import LoginScreen from './app/screens/LoginScreen';
 
-
-
 export default function App() {
-
-   return <WelcomeScreen/>
+	return <ListingDetailsScreen />;
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+	container: {
+		flex: 1,
+		backgroundColor: '#fff',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 });

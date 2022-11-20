@@ -2,7 +2,6 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
 import colors from '../config/colors';
 
 // Components:

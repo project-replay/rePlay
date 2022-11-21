@@ -134,7 +134,8 @@ const styles = StyleSheet.create({
 		color: colors.primary,
 	},
 	logoContainer: {
-		marginBottom: -50,
+		marginTop: -10,
+		marginBottom: -10,
 	},
 	registerButton: {
 		textAlign: 'center',

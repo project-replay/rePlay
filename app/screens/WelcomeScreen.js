@@ -51,7 +51,7 @@ function WelcomeScreen({navigation}) {
 				/>
 			</View>
 
-			<AppButton title={'Create Your Account'} onPress={() => navigation.navigate("Login")} />
+			<AppButton title={'Create Your Account'} onPress={() => navigation.navigate("Register")} />
 
 			<View style={styles.loginContainer}>
 				<AppText

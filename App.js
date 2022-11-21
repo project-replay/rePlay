@@ -23,7 +23,7 @@ import LoginScreen from './app/screens/LoginScreen';
 
 export default function App() {
 
-   return <MessagesScreen />
+  return <MessagesScreen />
 }
 
 const styles = StyleSheet.create({

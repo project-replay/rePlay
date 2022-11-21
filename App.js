@@ -14,6 +14,7 @@ import Icon from './app/components/Icon';
 import ListItem from './app/components/ListItem';
 import AppPicker from './app/components/AppPicker';
 import AppTextInput from './app/components/AppTextInput';
+import PageHeaderWithBell from './app/components/PageHeaderWithBell';
 
 // Screen
 import ViewImageScreen from './app/screens/ViewImageScreen';
@@ -24,6 +25,7 @@ import MyAccountScreen from './app/screens/AccountScreen';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
 import LoginScreen from './app/screens/LoginScreen';
+import BrowsingFeed from './app/screens/BrowsingFeed';
 
 export const AppStateContext = React.createContext();
 
@@ -33,7 +35,7 @@ function App() {
 
 	return (
 		<AppStateContext.Provider value={{ imageUrl, setImageUrl }}>
-			<Camera />
+			<BrowsingFeed />
 		</AppStateContext.Provider>
 	);
 }

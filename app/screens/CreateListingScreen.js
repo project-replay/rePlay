@@ -7,16 +7,17 @@ import { AppStateContext } from '../../App';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
 import ListItem from '../components/ListItem';
-import PageHeader from '../components/PageHeader';
+import PageHeaderWithBell from '../components/PageHeaderWithBell';
 import PageFooter from '../components/PageFooter';
+import Screen from '../components/Screen';
 
 function CreateListingScreen() {
 	const { imageUrl } = useContext(AppStateContext);
 
 	return (
-		<View>
-			<PageHeader />
-      <AppText children={'Create Listing'} style={styles.header}/>
+		<Screen>
+			<PageHeaderWithBell />
+			<AppText children={'Create Listing'} style={styles.header} />
 			<Image
 				source={{
 					uri: 'https://res.cloudinary.com/dwppzi7rk/image/upload/v1669005468/z1btqpgaqb5azlxi92nc.jpg',
@@ -24,7 +25,7 @@ function CreateListingScreen() {
 				style={{ width: 100, height: 100 }}
 			/>
 			<PageFooter />
-		</View>
+		</Screen>
 	);
 }
 

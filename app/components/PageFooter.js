@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
 
-function PageHeader(props) {
+function PageFooter(props) {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.bottom}>
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default PageHeader;
+export default PageFooter;

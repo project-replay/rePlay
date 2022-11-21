@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Image, ScrollView, StyleSheet, View } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AppStateContext } from '../../App';
 import { Ionicons } from '@expo/vector-icons';
 import colors from '../config/colors';
@@ -8,7 +9,7 @@ import colors from '../config/colors';
 import AppText from '../components/AppText';
 import AppTextInput from '../components/AppTextInput';
 import ListItemSquare from '../components/ListItemSquare';
-import PageHeader from '../components/PageHeader';
+import PageHeaderWithBell from '../components/PageHeaderWithBell';
 import PageFooter from '../components/PageFooter';
 import Screen from '../components/Screen';
 
@@ -17,14 +18,16 @@ import BabyClothes from '../assets/png/baby-clothes.png';
 import Backpack from '../assets/png/backpack.png';
 import Crib from '../assets/png/crib.png';
 import Xylophone from '../assets/png/xylophone.png';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import PageHeaderNoBell from '../components/PageHeaderNoBell';
+
 
 function BrowsingFeed() {
 	const { imageUrl } = useContext(AppStateContext);
 
 	return (
 		<Screen style={styles.container}>
-			<PageHeader />
+			<PageHeaderNoBell />
 
 			<AppText children='What can we help you find?' style={styles.header} />
 			<AppTextInput

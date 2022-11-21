@@ -32,7 +32,7 @@ const categories = [
 	{label: "Toddler Clothing",  value: "5"},
 ]
 
-function CreateListingScreen() {
+function CreateListingScreen({navigation}) {
 	const [category, setCategory] = useState();
 	const { imageUrl } = useContext(AppStateContext);
 
@@ -85,7 +85,8 @@ function CreateListingScreen() {
 							textContentType='tags'
 						/>
 
-                        <SubmitButton title="Submit" />
+                        <SubmitButton title="Submit"
+						onPress={() => {handleSubmit; navigation.navigate("Feed")} } />
 
 			</AppForm>
 			</ScrollView>

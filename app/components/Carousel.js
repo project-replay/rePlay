@@ -61,11 +61,11 @@ export default function Carousel() {
 		return (
 			<View
 				style={{
-					justifyContent: 'center',
+					justifyContent: 'flex-end',
 					alignItems: 'center',
 					width: windowWidth,
 					height: 300,
-					marginBottom: 70,
+					marginBottom: 40,
 				}}>
 				<Image
 					source={item.image}
@@ -77,8 +77,8 @@ export default function Carousel() {
 					children={item.description}
 					style={{
 						marginTop: 20,
+						marginBottom: 20,
 						textAlign: 'center',
-						paddingBottom: 20,
 						fontSize: 17,
 						fontWeight: 'bold',
 						color: colors.blue,

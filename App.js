@@ -22,14 +22,15 @@ import AppPicker from './app/components/AppPicker';
 import LoginScreen from './app/screens/LoginScreen';
 
 export default function App() {
-	return <ListingDetailsScreen />;
+
+   return <MessagesScreen />
 }
 
 const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
+  container: {
+    flex: 1,
+    backgroundColor: "red",
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });

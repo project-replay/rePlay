@@ -27,26 +27,26 @@ function ListingDetailsScreen() {
 }
 
 const styles = StyleSheet.create({
-	image: {
-		width: '100%',
-		height: 300,
-	},
-	detailsContainer: {
-		padding: 20,
-	},
-	price: {
-		color: colors.secondary,
-		fontWeight: 'bold',
-		fontSize: 20,
-		marginVertical: 10,
-	},
-	title: {
-		fontSize: 24,
-		fontWeight: '500',
-	},
-	userContainer: {
-		marginVertical: 40,
-	},
-});
+    image: {
+        width: '100%',
+        height: 300,
+    },
+    detailsContainer: {
+        padding: 20,
+    },
+    price: {
+        color: colors.primary,
+        fontWeight: "bold",
+        fontSize: 20,
+        marginVertical: 10,
+    },
+    title: {
+        fontSize: 24,
+        fontWeight: "500",
+    },
+    userContainer: {
+        marginVertical: 40,
+    }
+})
 
 export default ListingDetailsScreen;

@@ -1,30 +1,17 @@
-import React from 'react';
-import { Platform, StyleSheet, Text } from 'react-native';
-import colors from '../config/colors';
+import React from 'react'
+import { Text, StyleSheet, Platform } from 'react-native';
+import defaultStyles from '../config/styles';
 
-function AppText({ text, paddingTop, fontSize, textColor, style }) {
-	return (
-		<Text
-			style={[
-				styles.text,
-				{ paddingTop: paddingTop },
-				{ fontSize: fontSize },
-				{ color: colors[textColor] },
-				style,
-			]}>
-			{text}
-		</Text>
-	);
+function AppText({children, style}) {
+  return <Text style={[defaultStyles.text, style]}>{children}</Text>
 }
 
 const styles = StyleSheet.create({
-	text: {
-		textAlign: 'center',
-		fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
-		fontWeight: 'bold',
-		fontSize: 20,
-		color: colors.medium,
-	},
+  text: {
+    fontSize: 20,
+    padding: 0,
+    fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir", 
+},
 });
 
 export default AppText;

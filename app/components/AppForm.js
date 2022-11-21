@@ -3,7 +3,7 @@ import {Formik} from "formik";
 
 function AppForm({initialValues, onSubmit, validationSchema, children, style}) {
     return (
-        <Formik
+        <Formik 
 		    initialValues={initialValues}
 			onSubmit={onSubmit}
             validationSchema={validationSchema}

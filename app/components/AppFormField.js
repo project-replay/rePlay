@@ -2,7 +2,7 @@ import React from 'react';
 import AppTextInput from './AppTextInput';
 import ErrorMessage from './ErrorMessage';
 import { useFormikContext } from 'formik';
-import colors from '../config/colors';
+
 
 
 function AppFormField({name, ...otherProps}) {
@@ -21,5 +21,6 @@ function AppFormField({name, ...otherProps}) {
         </>
     );
 }
+
 
 export default AppFormField;

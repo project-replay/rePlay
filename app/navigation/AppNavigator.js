@@ -9,6 +9,8 @@ import FeedNavigator from './FeedNavigator';
 import AccountNavigator from './AccountNavigator';
 import NewListingButton from './NewListingButton';
 import colors from '../config/colors';
+import MessagesScreen from '../screens/MessagesScreen';
+import CreateListingScreen from '../screens/CreateListingScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,24 +24,24 @@ const AppNavigator = () => (
             tabBarIcon:({color, size}) => <MaterialCommunityIcons name="home" color={color} size={size} />}} 
         />
         <Tab.Screen 
-        name="Edit Listing" 
-        component={EditScreen} 
+        name="Favorites" 
+        component={ListingsScreen} 
         options={{
-            tabBarIcon:({color, size}) => <MaterialCommunityIcons name="plus-circle" color={color} size={size} />}}
+            tabBarIcon:({color, size}) => <MaterialCommunityIcons name="heart" color={color} size={size} />}}
         />
         <Tab.Screen 
         name="New Listing" 
-        component={EditScreen} 
+        component={CreateListingScreen} 
         options={({navigation}) => ({
             tabBarButton: () => <NewListingButton onPress={() => navigation.navigate("New Listing")} />,
             tabBarIcon:({color, size}) => <MaterialCommunityIcons name="plus-circle" color={color} size={size} />})}
         />
         <Tab.Screen 
-        name="Favorites" 
-        component={AccountNavigator} 
+        name="Messages" 
+        component={MessagesScreen} 
         options={{
             headerShown:false, 
-            tabBarIcon:({color, size}) => <MaterialCommunityIcons name="heart" color={color} size={size} />}} 
+            tabBarIcon:({color, size}) => <MaterialCommunityIcons name="message" color={color} size={size} />}} 
         />
         <Tab.Screen 
         name="Account" 

@@ -49,6 +49,12 @@ function MessagesScreen(props) {
 				onRefresh={() => {
 					setMessages([
 						{
+							id: 1,
+							title: 'T1',
+							description: 'Hello New Friend',
+							image: { uri: 'https://picsum.photos/200' },
+						},
+						{
 							id: 2,
 							title: 'T2',
 							description: 'D2',

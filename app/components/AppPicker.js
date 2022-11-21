@@ -5,10 +5,11 @@ import defaultStyles from '../config/styles'
 import AppText from './AppText';
 import Screen from './Screen';
 import PickerItem from './PickerItem';
+import colors from '../config/colors';
 
-function AppPicker({icon, placeHolder, items, onSelectItem, selectedItem }) {
+function AppPicker({icon, placeHolder, items, onSelectItem, selectedItem, style }) {
     const [modalVisible, setModalVisible] = useState(false);
-   
+
     return (
         <>
         <TouchableWithoutFeedback onPress={()   => setModalVisible(true)}>
@@ -21,7 +22,7 @@ function AppPicker({icon, placeHolder, items, onSelectItem, selectedItem }) {
                     style={styles.icon} 
                     />
                 )}
-                <AppText style={ styles.text}>{selectedItem ? selectedItem.label : placeHolder}</AppText>
+                <AppText style={ [styles.text, style]}>{selectedItem ? selectedItem.label : placeHolder}</AppText>
                 <MaterialCommunityIcons
                 name="chevron-down"
                 size={20}
@@ -51,7 +52,7 @@ function AppPicker({icon, placeHolder, items, onSelectItem, selectedItem }) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: defaultStyles.colors.light,
+        backgroundColor: defaultStyles.colors.white,
         borderRadius: 25,
         flexDirection: 'row',
         width: "100%",
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
     },
     text: {
         flex: 1,
+        color: colors.black
     }
 })
 

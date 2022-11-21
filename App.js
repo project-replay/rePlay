@@ -27,6 +27,7 @@ import AccountScreen from './app/screens/AccountScreen';
 import ListingsScreen from './app/screens/ListingsScreen';
 import LoginScreen from './app/screens/LoginScreen';
 import EditScreen from './app/screens/EditListing';
+import CreateListingScreen from './app/screens/CreateListingScreen';
 
 // Navigation
 import AuthNavigator from './app/navigation/AuthNavigator';
@@ -45,7 +46,7 @@ function App() {
 	return (
 		<AppStateContext.Provider value={{ imageUrl, setImageUrl }}>
 			<NavigationContainer theme={navigationTheme}>
-				<LoginScreen />
+				<CreateListingScreen />
 			</NavigationContainer>
 		</AppStateContext.Provider>
 	);

@@ -20,14 +20,12 @@ import ListingsScreen from './app/screens/ListingsScreen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
 import LoginScreen from './app/screens/LoginScreen';
+import RegisterScreen from './app/screens/RegisterFormScreen';
+import EditScreen from './app/screens/EditListing';
 
 export default function App() {
 
-<<<<<<< HEAD
-   return <LoginScreen />
-=======
-  return <MessagesScreen />
->>>>>>> 9c716122435c709c3494764575f694884eab65e8
+  return <EditScreen />
 }
 
 const styles = StyleSheet.create({

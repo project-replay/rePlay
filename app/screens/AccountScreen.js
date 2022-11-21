@@ -15,7 +15,7 @@ const menuItems = [
 		},
 	},
 	{
-		title: 'My Messages',
+		title: 'Messages',
 		icon: {
 			name: 'email',
 			backgroundColor: colors.secondary,
@@ -32,13 +32,14 @@ function AccountScreen({navigation}) {
 					title='My Name'
 					subTitle='youremailhere@gmail.com'
 					image={{ uri: 'https://picsum.photos/200' }}
+					
 				/>
+				<ListItemSeparator></ListItemSeparator>
 			</View>
 			<View style={styles.container}>
 				<FlatList
 					data={menuItems}
 					keyExtractor={(menuItem) => menuItem.title}
-					ItemSeparatorComponent={ListItemSeparator}
 					renderItem={({ item }) => (
 						<ListItem
 							title={item.title}
@@ -48,7 +49,7 @@ function AccountScreen({navigation}) {
 									backgroundColor={item.icon.backgroundColor}
 								/>
 							}
-							onPress={() => navigation.navigate(item.targetScreen)}
+							onPress={() => navigation.navigate(item.title)}
 						/>
 					)}
 				/>
@@ -56,6 +57,7 @@ function AccountScreen({navigation}) {
 			<ListItem
 				title='Log Out'
 				IconComponent={<Icon name='logout' backgroundColor='#ffe66d' />}
+				onPress={() => navigation.navigate("Welcome") }
 			/>
 		</Screen>
 	);
@@ -63,7 +65,7 @@ function AccountScreen({navigation}) {
 
 const styles = StyleSheet.create({
 	container: {
-		marginVertical: 20,
+		margin: 10,
 	},
 	screen: {
 		backgroundColor: colors.light,

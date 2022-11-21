@@ -30,7 +30,7 @@ function MessagesScreen(props) {
 
 	return (
 		<Screen>
-			<FlatList
+			<FlatList 
 				data={messages}
 				keyExtractor={(message) => message.id.toString()}
 				renderItem={({ item }) => (
@@ -44,7 +44,6 @@ function MessagesScreen(props) {
 						)}
 					/>
 				)}
-				ItemSeparatorComponent={ListItemSeparator}
 				refreshing={refreshing}
 				onRefresh={() => {
 					setMessages([
@@ -66,7 +65,5 @@ function MessagesScreen(props) {
 		</Screen>
 	);
 }
-
-const styles = StyleSheet.create({});
 
 export default MessagesScreen;

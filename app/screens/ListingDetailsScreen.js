@@ -1,14 +1,15 @@
 'react';
-import { Image, View, StyleSheet } from 'react-native';
+import { Image, View, StyleSheet, ScrollView } from 'react-native';
 import AppText from '../components/AppText';
 import colors from '../config/colors';
 import ListItem from '../components/ListItem';
 import AppButton from '../components/AppButton';
 
 
-function ListingDetailsScreen({route}) {
+function ListingDetailsScreen({route, navigation}) {
     const listing = route.params;
     return (
+        <ScrollView>
         <View>
             <Image style={styles.image} source={listing.image} />
             <View style={styles.detailsContainer}>
@@ -28,11 +29,14 @@ function ListingDetailsScreen({route}) {
                 </View>
                 <AppButton
                     title={'Edit Listing'}
+                    onPress={() => navigation.navigate("Edit Listing")}
 
 
                 />
             </View>
         </View>
+        </ScrollView>
+        
     );
 }
 

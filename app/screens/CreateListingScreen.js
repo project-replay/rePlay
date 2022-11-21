@@ -106,7 +106,8 @@ function CreateListingScreen({navigation}) {
 						/>
 
                         <SubmitButton title="Submit"
-						onPress={() => {handleSubmit; navigation.navigate("Feed")} } />
+						onPress={() => navigation.navigate('After Listing')}
+						/>
 				</AppForm>
 			</ScrollView>
 		</Screen>

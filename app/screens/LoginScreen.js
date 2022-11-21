@@ -1,26 +1,49 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import { Formik } from 'formik';
+// import * as Yup from 'yup';
+import colors from '../config/colors';
+
+// Components
 import AppButton from '../components/AppButton';
 import AppTextInput from '../components/AppTextInput';
-import Screen from '../components/Screen';
-import ReplayLogo from '../assets/svg/ReplayLogo';
-import colors from '../config/colors';
-import Train from '../assets/svg/Train';
+import AppText from '../components/AppText';
 import ListItemSeparator from '../components/ListItemSeparator';
-import { Formik } from 'formik';
+import Screen from '../components/Screen';
+
+// Assets
+import CarToy from '../assets/png/car-toy.png';
+import ReplayLogo from '../assets/png/replay-logo.png';
 
 function LoginScreen(props) {
+	// const validationSchema = Yup.object().shape({
+	// 	username: Yup.string().required(),
+	// 	password: Yup.string().required(),
+	// });
+
+	// const handleLoginSubmit = async (values) => {
+	// 	const response = await axios
+	// 		.post('http://localhost:3001/api/users/login', values)
+	// 		.catch((err) => {
+	// 			alert('Please try again.');
+	// 		});
+
+	// 	if (response) {
+	// 		alert('Welcome back in. Authenticating...');
+	// 	}
+	// };
+
 	return (
 		<Screen style={styles.container}>
-			<View style={styles.header}>
-				<ReplayLogo />
-			</View>
+			<Image style={styles.logo} source={ReplayLogo} />
 			<ListItemSeparator />
-			<View style={styles.train}>
-				<Train />
-			</View>
+			<Image style={styles.carToy} source={CarToy} />
+			<AppText children={'Log into your account'} style={styles.headerText} />
 
 			<Formik
+				// initialValues={{ username: '', password: '' }}
+				// onSubmit={handleLoginSubmit}
+				// validationSchema={validationSchema}>
 				initialValues={{ email: '', password: '' }}
 				onSubmit={(values) => console.log(values)}>
 				{({ handleChange, handleSubmit }) => (
@@ -28,16 +51,16 @@ function LoginScreen(props) {
 						<AppTextInput
 							autoCapitalize='none'
 							autoCorrect={false}
-							icon='email'
-							keyboardType='email-address'
-							onChangeText={handleChange('email')}
-							placeholder='Email'
-							textContentType='emailAddress'
+							// icon='email'
+							// keyboardType='email-address'
+							onChangeText={handleChange('username')}
+							placeholder='Username'
+							textContentType='username'
 						/>
 						<AppTextInput
 							autoCapitalize='none'
 							autoCorrect={false}
-							icon='lock'
+							// icon='lock'
 							onChangeText={handleChange('password')}
 							placeholder='Password'
 							secureTextEntry
@@ -56,29 +79,22 @@ function LoginScreen(props) {
 	);
 }
 const styles = StyleSheet.create({
+	carToy: {
+		alignSelf: 'center',
+	},
 	container: {
 		padding: 10,
 		backgroundColor: colors.light,
 	},
-	header: {
-		justifyContent: 'center',
+	headerText: {
 		alignSelf: 'center',
-		margin: 0,
+		marginTop: 30,
+		fontSize: 30,
+		fontWeight: 'bold',
 	},
 	logo: {
-		width: 80,
-		height: 80,
 		alignSelf: 'center',
-		marginTop: 50,
-		marginBottom: 20,
-	},
-	text: {
-		color: 'white',
-	},
-	train: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		margin: 10,
+		marginBottom: 15,
 	},
 });
 

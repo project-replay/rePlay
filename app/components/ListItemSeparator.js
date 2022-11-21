@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 	separator: {
 		width: '100%',
 		height: 1,
-		backgroundColor: 'lightgrey',
+		backgroundColor: colors.blue,
 		marginTop: -5,
 		marginBottom: 40,
 	},

@@ -15,6 +15,6 @@ GA Hackathon (11/16 - 11/21) Team 1
 ## Technologies
 
 - Frontend: React Native
-- Backend: MongoDB, Express.js, Node.js, Firebase, Cloudinary
-- Tools: Figma
+- Backend: MongoDB, Express.js, Node.js
+- Tools: Figma, Firebase, Cloudinary
 

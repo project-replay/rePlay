@@ -54,7 +54,7 @@ function LoginScreen(props) {
 				email,
 				password
 			);
-			console.log("YAY!")
+			console.log('YAY!');
 			// const user = userCredentials.user;
 		} catch (error) {
 			alert(error.message);
@@ -92,12 +92,19 @@ function LoginScreen(props) {
 					textContentType='password'
 				/>
 
-				<SubmitButton title='Login' />
+				<SubmitButton title='Log In' style={styles.submitButton} />
+				<AppButton title='Cancel' bgColor='light' style={styles.cancelButton} />
 			</AppForm>
 		</Screen>
 	);
 }
 const styles = StyleSheet.create({
+	cancelButton: {
+		marginTop: 7,
+		fontSize: 17,
+		fontWeight: 'normal',
+		color: colors.primary,
+	},
 	carToy: {
 		alignSelf: 'center',
 	},
@@ -114,6 +121,9 @@ const styles = StyleSheet.create({
 	logo: {
 		alignSelf: 'center',
 		marginBottom: 15,
+	},
+	submitButton: {
+		fontSize: 17,
 	},
 });
 

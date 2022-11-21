@@ -18,7 +18,7 @@ export default function App() {
 	const [hasCameraPermission, setHasCameraPermission] = useState();
 	const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
 	const [photo, setPhoto] = useState();
-	const { setImageUrl } = useContext(AppStateContext);
+	const { imageUrl, setImageUrl } = useContext(AppStateContext);
 
 	useEffect(() => {
 		(async () => {
@@ -29,6 +29,10 @@ export default function App() {
 			setHasMediaLibraryPermission(mediaLibraryPermission.status === 'granted');
 		})();
 	}, []);
+
+	useEffect(()=> {
+		// NAVIGATE TO CREATELISTINGSCREEN
+	}, [imageUrl])
 
 	if (hasCameraPermission === undefined) {
 		return <Text>Requesting permissions...</Text>;

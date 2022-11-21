@@ -15,7 +15,7 @@ function PageHeaderWithBell(props) {
 }
 
 const styles = StyleSheet.create({
-	bell: { marginLeft: 100, marginRight: 25 },
+	bell: { marginLeft: 80, marginRight: 25 },
 	container: {
 		position: 'relative',
 		display: 'flex',

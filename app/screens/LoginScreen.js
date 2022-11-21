@@ -1,6 +1,9 @@
-import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
+import { auth } from '../../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import * as Yup from 'yup';
 import colors from '../config/colors';
 
@@ -20,22 +23,43 @@ import SubmitButton from '../components/SubmitButton';
 import AppForm from '../components/AppForm';
 
 const validationSchema = Yup.object().shape({
-    email: Yup.string().required().email().label("Email"),
-    password: Yup.string().required().min(4).label("Password"),
-})
+	email: Yup.string().required().email().label('Email'),
+	password: Yup.string().required().min(4).label('Password'),
+});
 
 function LoginScreen(props) {
-	// const handleLoginSubmit = async (values) => {
-	// 	const response = await axios
-	// 		.post('http://localhost:3001/api/users/login', values)
-	// 		.catch((err) => {
-	// 			alert('Please try again.');
-	// 		});
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
-	// 	if (response) {
-	// 		alert('Welcome back in. Authenticating...');
-	// 	}
-	// };
+	const navigation = useNavigation();
+
+	// If user is logged in, navigate them to Home
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((user) => {
+			if (user) {
+				navigation.navigate('Home');
+			}
+		});
+
+		return () => {
+			unsubscribe();
+		};
+	}, []);
+
+	// Log in user via email
+	const handleEmailLogin = async () => {
+		try {
+			const userCredentials = await signInWithEmailAndPassword(
+				auth,
+				email,
+				password
+			);
+			console.log('YAY!');
+			// const user = userCredentials.user;
+		} catch (error) {
+			alert(error.message);
+		}
+	};
 
 	return (
 		<Screen style={styles.container}>
@@ -44,39 +68,44 @@ function LoginScreen(props) {
 			<Image style={styles.carToy} source={CarToy} />
 			<AppText children={'Log into your account'} style={styles.headerText} />
 
-			<AppForm 
-				initialValues={{ email: '', password: '', name: "" }}
-				onSubmit={(values) => console.log(values)}
-                    validationSchema={validationSchema}
-                >
-						<AppFormField
-							autoCapitalize='none'
-							autoCorrect={false}
-							// icon='email'
-							keyboardType='email-address'
-                            name="email"
-							placeholder='Username'
-							textContentType='username'
-						/>
+			<AppForm
+				initialValues={{ email: '', password: '', name: '' }}
+				onSubmit={handleEmailLogin}
+				validationSchema={validationSchema}>
+				<AppFormField
+					autoCapitalize='none'
+					autoCorrect={false}
+					icon='email'
+					keyboardType='email-address'
+					name='email'
+					placeholder='Username'
+					textContentType='username'
+				/>
 
-						<AppFormField
-							autoCapitalize='none'
-							autoCorrect={false}
-							// icon='lock'
-                            name="password"
-							placeholder='Password'
-							secureTextEntry
-							textContentType='password'
-						/>
+				<AppFormField
+					autoCapitalize='none'
+					autoCorrect={false}
+					icon='lock'
+					name='password'
+					placeholder='Password'
+					secureTextEntry
+					textContentType='password'
+				/>
 
-                        <SubmitButton title="Login" />
-
+				<SubmitButton title='Log In' style={styles.submitButton} />
+				<AppButton title='Cancel' bgColor='light' style={styles.cancelButton} />
 			</AppForm>
 		</Screen>
 	);
 }
 const styles = StyleSheet.create({
-    carToy: {
+	cancelButton: {
+		marginTop: 7,
+		fontSize: 17,
+		fontWeight: 'normal',
+		color: colors.primary,
+	},
+	carToy: {
 		alignSelf: 'center',
 	},
 	container: {
@@ -92,6 +121,9 @@ const styles = StyleSheet.create({
 	logo: {
 		alignSelf: 'center',
 		marginBottom: 15,
+	},
+	submitButton: {
+		fontSize: 17,
 	},
 });
 

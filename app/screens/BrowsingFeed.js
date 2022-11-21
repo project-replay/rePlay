@@ -27,6 +27,7 @@ function BrowsingFeed() {
 
 	return (
 		<Screen style={styles.container}>
+		<ScrollView>
 			<PageHeaderNoBell />
 
 			<AppText children='What can we help you find?' style={styles.header} />
@@ -236,6 +237,7 @@ function BrowsingFeed() {
 			</View>
 
 			<PageFooter />
+			</ScrollView>
 		</Screen>
 	);
 }

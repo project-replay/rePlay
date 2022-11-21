@@ -49,7 +49,7 @@ function WelcomeScreen() {
 				// component={<GoogleIcon />}
 				title={'Continue with Google'}
 				onPress={() => {}}
-				bgColor={'white'}
+				bgColor={'primary'}
 				textColor={'black'}
 				fontSize={20}
 				hasBorder
@@ -59,7 +59,7 @@ function WelcomeScreen() {
 				// component={<FacebookIcon />}
 				title={'Continue with Facebook'}
 				onPress={() => {}}
-				bgColor={'white'}
+				bgColor={'primary'}
 				textColor={'black'}
 				hasBorder
 				fontSize={20}

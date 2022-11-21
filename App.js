@@ -25,13 +25,13 @@ import LoginScreen from './app/screens/LoginScreen';
 
 export default function App() {
 
-   return <WelcomeScreen/>
+   return <MessagesScreen />
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "red",
     alignItems: 'center',
     justifyContent: 'center',
   },

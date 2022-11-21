@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import {Image, StyleSheet, View} from 'react-native'
+import {Image, StyleSheet, Text, View} from 'react-native'
 import AppButton from '../components/AppButton';
 import AppTextInput from '../components/AppTextInput';
 import Screen from '../components/Screen';
 import ReplayLogo from '../assets/svg/ReplayLogo';
 import colors from '../config/colors';
+import Train from '../assets/svg/Train'
+import ListItemSeperator from '../components/ListItemSeperator';
 
 function LoginScreen(props) {
 const [email, setEmail] = useState();
@@ -14,6 +16,10 @@ const [password, setPassword] = useState();
         <Screen style={styles.container}>
             <View style={styles.header}>
             <ReplayLogo  />
+            </View>
+            <ListItemSeperator />
+            <View style={styles.train}>
+                <Train />
             </View>
             <AppTextInput
             autoCapitalize="none"
@@ -33,9 +39,10 @@ const [password, setPassword] = useState();
             secureTextEntry
             textContentType="password"
             />
-            <AppButton 
+            <AppButton style={styles.text}
             title="Login"
             onPress={() => console.log(email, password)}
+            bgColor= "primary"
             />
         </Screen>
     );
@@ -48,7 +55,7 @@ const styles = StyleSheet.create({
     header: {
         justifyContent: "center",
         alignSelf: "center",
-        margin: 10,
+        margin: 0,
     },
     logo: {
         width: 80,
@@ -56,6 +63,14 @@ const styles = StyleSheet.create({
         alignSelf: "center",
         marginTop: 50,
         marginBottom: 20,
+    },
+    text: {
+        color: "white"
+    },
+    train: {
+        justifyContent: "center",
+        alignItems: "center",
+        margin: 10,
     }
 })
 

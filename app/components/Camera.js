@@ -1,4 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
+import { useContext, useEffect, useRef, useState } from 'react';
 import {
 	StyleSheet,
 	Text,
@@ -8,18 +8,18 @@ import {
 	Image,
 	TouchableOpacity,
 } from 'react-native';
-import { useEffect, useRef, useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { Camera } from 'expo-camera';
-import { shareAsync } from 'expo-sharing';
+import { Ionicons } from '@expo/vector-icons';
 import * as MediaLibrary from 'expo-media-library';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { AppStateContext } from '../../App';
 
 export default function App() {
 	const cameraRef = useRef();
 	const [hasCameraPermission, setHasCameraPermission] = useState();
 	const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
 	const [photo, setPhoto] = useState();
-	const [isPreview, setIsPreview] = useState(false);
+	const { imageUrl, setImageUrl } = useContext(AppStateContext);
 
 	useEffect(() => {
 		(async () => {
@@ -75,14 +75,16 @@ export default function App() {
 				},
 				method: 'POST',
 			})
-				.then(async (response) => {
-					let data = await response.json();
+				.then((response) => {
+					return response.json();
+				})
+				.then((data) => {
 					if (data.secure_url) {
-						alert('Upload successful!');
+						setImageUrl(data.secure_url);
 					}
 				})
 				.catch((err) => {
-					alert('Cannot upload');
+					alert('Cannot upload. Please try again later.');
 				});
 
 			// Save to phone
@@ -97,7 +99,6 @@ export default function App() {
 					style={styles.preview}
 					source={{ uri: 'data:image/jpg;base64,' + photo.base64 }}
 				/>
-				{/* <Button title='Share' onPress={sharePic} /> */}
 				{hasMediaLibraryPermission ? (
 					<Button title='Save' onPress={savePhoto} />
 				) : undefined}

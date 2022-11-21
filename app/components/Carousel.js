@@ -1,5 +1,7 @@
-import * as React from 'react';
-import { Text, View, FlatList, Image } from 'react-native';
+import React from 'react';
+import { Dimensions, FlatList, Image, View } from 'react-native';
+// import Dots from 'react-native-dots-pagination';
+import PaginationDot from 'react-native-animated-pagination-dot';
 
 // PNG images
 import BabyClothes from '../assets/png/baby-clothes.png';
@@ -8,6 +10,11 @@ import BoxOfItems from '../assets/png/box-of-items.png';
 import Stroller from '../assets/png/stroller.png';
 import Train from '../assets/png/train.png';
 import Truck from '../assets/png/truck.png';
+import colors from '../config/colors';
+import styles from '../config/styles';
+
+import AppText from './AppText';
+const windowWidth = Dimensions.get('window').width;
 
 const data = [
 	{
@@ -44,15 +51,45 @@ const data = [
 ];
 
 export default function Carousel() {
-	const [current, setCurrent] = React.useState(0);
+	const [current] = React.useState(0);
+	const [curPage] = React.useState(0);
+
 	const length = data.length;
 	const flatListRef = React.useRef();
 
 	const renderItem = ({ item }) => {
 		return (
-			<View style={{ width: 300, height: 500 }}>
-				<Image source={item.image} />
-				<Text>{item.description}</Text>
+			<View
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					width: windowWidth,
+					height: 300,
+					marginBottom: 70,
+				}}>
+				<Image
+					source={item.image}
+					style={{
+						marginTop: 100,
+					}}
+				/>
+				<AppText
+					children={item.description}
+					style={{
+						marginTop: 20,
+						textAlign: 'center',
+						paddingBottom: 20,
+						fontSize: 17,
+						fontWeight: 'bold',
+						color: colors.blue,
+					}}
+				/>
+				<PaginationDot
+					activeDotColor={colors.primary}
+					curPage={item.id}
+					maxPage={6}
+					
+				/>
 			</View>
 		);
 	};
@@ -60,9 +97,11 @@ export default function Carousel() {
 	const goNextSlide = () => {
 		setCurrent(current === length - 1 ? 0 : current + 1);
 		flatListRef.current.scrollToIndex({ index: current, animated: true });
+		setCurPage(current);
 	};
 	const goPrevSlide = () => {
 		setCurrent(current === 0 ? length - 1 : current - 1);
+		setCurPage(current);
 		flatListRef.current.scrollToIndex({ index: current, animated: true });
 	};
 

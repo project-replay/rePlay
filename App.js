@@ -35,7 +35,7 @@ import navigationTheme from './app/navigation/navigationTheme';
 import AppNavigator from './app/navigation/AppNavigator';
 import AccountNavigator from './app/navigation/AccountNavigator';
 import BrowsingFeedScreen from './app/screens/BrowsingFeedScreen';
-import RegisterFormScreen from './app/screens/RegisterFormScreen'
+import RegisterFormScreen from './app/screens/RegisterFormScreen';
 
 export const AppStateContext = React.createContext();
 
@@ -46,7 +46,7 @@ function App() {
 	return (
 		<AppStateContext.Provider value={{ imageUrl, setImageUrl }}>
 			<NavigationContainer theme={navigationTheme}>
-				<CreateListingScreen />
+				<WelcomeScreen />
 			</NavigationContainer>
 		</AppStateContext.Provider>
 	);

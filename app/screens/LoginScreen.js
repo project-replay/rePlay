@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import { auth } from '../../firebase';
@@ -9,7 +9,6 @@ import colors from '../config/colors';
 
 // Components
 import AppButton from '../components/AppButton';
-import AppTextInput from '../components/AppTextInput';
 import AppText from '../components/AppText';
 import ListItemSeparator from '../components/ListItemSeparator';
 import Screen from '../components/Screen';
@@ -54,7 +53,6 @@ function LoginScreen(props) {
 				email,
 				password
 			);
-			console.log('YAY!');
 			// const user = userCredentials.user;
 		} catch (error) {
 			alert(error.message);
@@ -69,7 +67,7 @@ function LoginScreen(props) {
 			<AppText children={'Log into your account'} style={styles.headerText} />
 
 			<AppForm
-				initialValues={{ email: '', password: '', name: '' }}
+				initialValues={{ email: '', password: '' }}
 				onSubmit={handleEmailLogin}
 				validationSchema={validationSchema}>
 				<AppFormField
@@ -78,8 +76,9 @@ function LoginScreen(props) {
 					icon='email'
 					keyboardType='email-address'
 					name='email'
-					placeholder='Username'
-					textContentType='username'
+					placeholder='Email'
+					placeholderTextColor={colors.primary}
+					textContentType='email'
 				/>
 
 				<AppFormField
@@ -88,19 +87,32 @@ function LoginScreen(props) {
 					icon='lock'
 					name='password'
 					placeholder='Password'
+					placeholderTextColor={colors.primary}
 					secureTextEntry
 					textContentType='password'
 				/>
 
-				<SubmitButton title='Log In' style={styles.submitButton} />
-				<AppButton title='Cancel' bgColor='light' style={styles.cancelButton} />
+				<View style={styles.buttonContainer}>
+					<SubmitButton title='Log In' style={styles.submitButton} />
+					<AppButton
+						title='Cancel'
+						bgColor='light'
+						style={styles.cancelButton}
+					/>
+				</View>
 			</AppForm>
 		</Screen>
 	);
 }
 const styles = StyleSheet.create({
+	buttonContainer: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		marginTop: 10,
+	},
 	cancelButton: {
-		marginTop: 7,
+		marginTop: 10,
 		fontSize: 17,
 		fontWeight: 'normal',
 		color: colors.primary,
@@ -114,8 +126,9 @@ const styles = StyleSheet.create({
 	},
 	headerText: {
 		alignSelf: 'center',
-		marginTop: 30,
-		fontSize: 30,
+		marginTop: 45,
+		marginBottom: 10,
+		fontSize: 26,
 		fontWeight: 'bold',
 	},
 	logo: {
@@ -123,6 +136,7 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 	},
 	submitButton: {
+		padding: 7,
 		fontSize: 17,
 	},
 });

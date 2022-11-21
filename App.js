@@ -46,7 +46,7 @@ function App() {
 	return (
 		<AppStateContext.Provider value={{ imageUrl, setImageUrl }}>
 			<NavigationContainer theme={navigationTheme}>
-				<WelcomeScreen />
+				<LoginScreen />
 			</NavigationContainer>
 		</AppStateContext.Provider>
 	);

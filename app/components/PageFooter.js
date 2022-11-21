@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
 		width: '100%',
 	},
 	container: {
-		position: 'fixed', // I HAVEN'T FIGURED OUT HOW TO PUSH THIS TO THE BOTTOM OF THE DEVICE!
+		position: 'absolute',
+		left: 0,
+		right: 0,
 		bottom: 0,
 		display: 'flex',
 		justifyContent: 'center',

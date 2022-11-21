@@ -10,24 +10,28 @@ function PageHeader(props) {
 		<SafeAreaView style={styles.container}>
 			<Image style={styles.logo} source={ReplayLogo} />
 			<Image style={styles.bell} source={NotificationBell} />
-      <View style={styles.spacer}/>
+			<View style={styles.spacer} />
 		</SafeAreaView>
 	);
 }
 
 const styles = StyleSheet.create({
-	bell: { position: 'absolute', top: 65, right: 25 },
+	bell: { marginLeft: 100, marginRight: 10 },
 	container: {
 		position: 'relative',
 		display: 'flex',
-		justifyContent: 'center',
+		flexDirection: 'row',
+		justifyContent: 'flex-end',
 		alignItems: 'center',
+		height: 60,
+		marginTop: -5,
 		borderBottomWidth: 1,
 		borderBottomColor: colors.blue,
 	},
-  spacer:{
-    padding: 7
-  }
+	logo: { marginBottom: 0 },
+	spacer: {
+		padding: 7,
+	},
 });
 
 export default PageHeader;

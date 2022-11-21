@@ -2,7 +2,6 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import {
 	StyleSheet,
 	Text,
-	View,
 	SafeAreaView,
 	Button,
 	Image,
@@ -19,7 +18,7 @@ export default function App() {
 	const [hasCameraPermission, setHasCameraPermission] = useState();
 	const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
 	const [photo, setPhoto] = useState();
-	const { imageUrl, setImageUrl } = useContext(AppStateContext);
+	const { setImageUrl } = useContext(AppStateContext);
 
 	useEffect(() => {
 		(async () => {
@@ -53,12 +52,6 @@ export default function App() {
 	};
 
 	if (photo) {
-		// const sharePic = () => {
-		// 	shareAsync(photo.uri).then(() => {
-		// 		setPhoto(undefined);
-		// 	});
-		// };
-
 		const savePhoto = () => {
 			// Save to Cloudinary
 			let base64Img = `data:image/jpg;base64,${photo.base64}`;

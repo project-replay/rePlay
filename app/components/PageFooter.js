@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
 
-function PageHeader(props) {
+function PageFooter(props) {
 	return (
 		<SafeAreaView style={styles.container}>
 			<View style={styles.bottom}>
@@ -29,7 +29,9 @@ const styles = StyleSheet.create({
 		width: '100%',
 	},
 	container: {
-		position: 'fixed', // I HAVEN'T FIGURED OUT HOW TO PUSH THIS TO THE BOTTOM OF THE DEVICE!
+		position: 'absolute',
+		left: 0,
+		right: 0,
 		bottom: 0,
 		display: 'flex',
 		justifyContent: 'center',
@@ -43,4 +45,4 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default PageHeader;
+export default PageFooter;

@@ -16,6 +16,7 @@ import Icon from './app/components/Icon';
 import ListItem from './app/components/ListItem';
 import AppPicker from './app/components/AppPicker';
 import AppTextInput from './app/components/AppTextInput';
+import PageHeaderWithBell from './app/components/PageHeaderWithBell';
 
 // Screen
 import ViewImageScreen from './app/screens/ViewImageScreen';
@@ -33,6 +34,7 @@ import AuthNavigator from './app/navigation/AuthNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
 import AppNavigator from './app/navigation/AppNavigator';
 import AccountNavigator from './app/navigation/AccountNavigator';
+import BrowsingFeed from './app/screens/BrowsingFeed';
 
 export const AppStateContext = React.createContext();
 

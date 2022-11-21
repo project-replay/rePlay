@@ -7,4 +7,5 @@ export default {
 	light: '#fef9f4', // nimbus
 	danger: '#ff5252',
 	blue: '#63799a', // slate blue
+	yellow: 'f4b466', // yellow ocre
 };

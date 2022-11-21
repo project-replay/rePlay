@@ -3,8 +3,7 @@ import { StyleSheet, Text, SafeAreaView, View, Switch } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from './app/config/colors';
-import { NavigationContainer } from "@react-navigation/native";
-
+import { NavigationContainer } from '@react-navigation/native';
 
 // Components
 import AppText from './app/components/AppText';
@@ -34,7 +33,8 @@ import AuthNavigator from './app/navigation/AuthNavigator';
 import navigationTheme from './app/navigation/navigationTheme';
 import AppNavigator from './app/navigation/AppNavigator';
 import AccountNavigator from './app/navigation/AccountNavigator';
-import BrowsingFeed from './app/screens/BrowsingFeed';
+import BrowsingFeedScreen from './app/screens/BrowsingFeedScreen';
+import RegisterFormScreen from './app/screens/RegisterFormScreen'
 
 export const AppStateContext = React.createContext();
 
@@ -44,9 +44,9 @@ function App() {
 
 	return (
 		<AppStateContext.Provider value={{ imageUrl, setImageUrl }}>
-      <NavigationContainer theme={navigationTheme}>
-          < AppNavigator />
-      </NavigationContainer>
+			<NavigationContainer theme={navigationTheme}>
+				<RegisterFormScreen />
+			</NavigationContainer>
 		</AppStateContext.Provider>
 	);
 }

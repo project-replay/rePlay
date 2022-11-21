@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import colors from '../config/colors';
 
@@ -10,9 +10,10 @@ import Carousel from '../components/Carousel';
 
 import ReplayLogo from '../assets/svg/ReplayLogo';
 
-function WelcomeScreen() {
+function WelcomeScreen({navigation}) {
 	return (
 		<SafeAreaView style={styles.container}>
+			<ScrollView>
 			<ReplayLogo />
 
 			{/* <TouchableOpacity style={styles.arrow} onPress={() => {}}>
@@ -50,7 +51,7 @@ function WelcomeScreen() {
 				/>
 			</View>
 
-			<AppButton title={'Create Your Account'} onPress={() => {}} />
+			<AppButton title={'Create Your Account'} onPress={() => navigation.navigate("Login")} />
 
 			<View style={styles.loginContainer}>
 				<AppText
@@ -59,7 +60,7 @@ function WelcomeScreen() {
 					fontSize={17}
 					textColor={'medium'}
 				/>
-				<TouchableOpacity style={[styles.login]} onPress={() => {}}>
+				<TouchableOpacity style={[styles.login]} onPress={() => navigation.navigate("Login")}>
 					<AppText
 						text={'Log in here'}
 						paddingTop={20}
@@ -74,6 +75,7 @@ function WelcomeScreen() {
 				onPress={() => {}}
 				color={'primary'}
 			/>
+			</ScrollView>
 		</SafeAreaView>
 	);
 }

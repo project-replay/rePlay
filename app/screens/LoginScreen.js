@@ -44,15 +44,15 @@ function LoginScreen(props) {
 			<Image style={styles.carToy} source={CarToy} />
 			<AppText children={'Log into your account'} style={styles.headerText} />
 
-			<AppForm
-				initialValues={{ email: '', password: '' }}
+			<AppForm 
+				initialValues={{ email: '', password: '', name: "" }}
 				onSubmit={(values) => console.log(values)}
                     validationSchema={validationSchema}
                 >
 						<AppFormField
 							autoCapitalize='none'
 							autoCorrect={false}
-							icon='email'
+							// icon='email'
 							keyboardType='email-address'
                             name="email"
 							placeholder='Username'
@@ -62,7 +62,7 @@ function LoginScreen(props) {
 						<AppFormField
 							autoCapitalize='none'
 							autoCorrect={false}
-							icon='lock'
+							// icon='lock'
                             name="password"
 							placeholder='Password'
 							secureTextEntry

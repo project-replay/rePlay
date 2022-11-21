@@ -9,13 +9,13 @@ const initialMessages = [
 	{
 		id: 1,
 		title: 'T1',
-		description: 'D1',
+		description: 'Hello New Friend',
 		image: { uri: 'https://picsum.photos/200' },
 	},
 	{
 		id: 2,
 		title: 'T2',
-		description: 'D2',
+		description: "It's dangerous to go alone, take This",
 		image: { uri: 'https://picsum.photos/200' },
 	},
 ];

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import AppButton from '../components/AppButton';
 import AppTextInput from '../components/AppTextInput';
 import Screen from '../components/Screen';
@@ -9,10 +9,12 @@ import CarToy from '../assets/svg/CarToy';
 import AppText from '../components/AppText';
 import ListItemSeparator from '../components/ListItemSeparator';
 import { Formik } from 'formik';
+import ListingsScreen from './ListingsScreen';
 
-function EditScreen(props) {
+function EditScreen({navigation}) {
     return (
         <Screen style={styles.container}>
+            <ScrollView>
             <View style={styles.header}>
                 <ReplayLogo />
             </View>
@@ -74,12 +76,13 @@ function EditScreen(props) {
                         <AppButton
                             style={styles.text}
                             title='Done edit'
-                            onPress={handleSubmit}
+                            onPress={() => {handleSubmit; navigation.navigate("Listings") }}
                             bgColor='primary'
                         />
                     </>
                 )}
             </Formik>
+            </ScrollView>
         </Screen>
     );
 }

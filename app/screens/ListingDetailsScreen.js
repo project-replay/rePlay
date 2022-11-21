@@ -6,18 +6,19 @@ import ListItem from '../components/ListItem';
 import AppButton from '../components/AppButton';
 
 
-function ListingDetailsScreen(props) {
+function ListingDetailsScreen({route}) {
+    const listing = route.params;
     return (
         <View>
-            <Image style={styles.image} source={require('../assets/jacket.jpg')} />
+            <Image style={styles.image} source={listing.image} />
             <View style={styles.detailsContainer}>
-                <AppText style={styles.title}>Red Jacket for Sale!</AppText>
-                <AppText style={styles.price}>$100</AppText>
-                <AppText style={styles.description}>Description</AppText>
-                <AppText style={styles.descriptionText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </AppText>
-                <AppText style={styles.condition}>Condition:</AppText>
-                <AppText style={styles.location}>Location:</AppText>
-                <AppText style={styles.tags}>Tags</AppText>
+                <AppText style={styles.title}>{listing.title}</AppText>
+                <AppText style={styles.price}>${listing.price}</AppText>
+                <AppText style={styles.description}>{listing.description}</AppText>
+                <AppText style={styles.descriptionText}>Description: {listing.descriptionText}</AppText>
+                <AppText style={styles.condition}>Condition: {listing.condition}:</AppText>
+                <AppText style={styles.location}>Location: {listing.location}:</AppText>
+                <AppText style={styles.tags}>Tags: {listing.tags}</AppText>
                 <View style={styles.userContainer}>
                     <ListItem
                         image={{ uri: "https://picsum.photos/200/300" }}

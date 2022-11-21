@@ -1,6 +1,5 @@
 import React from 'react';
 import { Dimensions, FlatList, Image, View } from 'react-native';
-// import Dots from 'react-native-dots-pagination';
 import PaginationDot from 'react-native-animated-pagination-dot';
 
 // PNG images

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
 	Image,
 	KeyboardAvoidingView,
+	ScrollView,
 	StyleSheet,
 	Text,
 	TextInput,
@@ -63,6 +64,7 @@ const RegisterFormScreen = () => {
 
 	return (
 		// <Screen>
+		<ScrollView>
 		<KeyboardAvoidingView
 			style={styles.container}
 			behavior='padding' // Prevents keyboard from covering input fields
@@ -171,6 +173,7 @@ const RegisterFormScreen = () => {
 				/>
 			</View>
 		</KeyboardAvoidingView>
+		</ScrollView>
 		// </Screen>
 	);
 };

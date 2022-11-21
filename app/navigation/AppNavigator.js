@@ -11,6 +11,8 @@ import NewListingButton from './NewListingButton';
 import colors from '../config/colors';
 import MessagesScreen from '../screens/MessagesScreen';
 import CreateListingScreen from '../screens/CreateListingScreen';
+import Camera from '../components/Camera';
+import OpenCameraButton from './OpenCameraButton';
 
 const Tab = createBottomTabNavigator();
 
@@ -29,13 +31,20 @@ const AppNavigator = () => (
         options={{
             tabBarIcon:({color, size}) => <MaterialCommunityIcons name="heart" color={color} size={size} />}}
         />
-        <Tab.Screen 
+        {/* <Tab.Screen 
         name="New Listing" 
-        component={CreateListingScreen} 
+        component={CreateListingScreen}
         options={({navigation}) => ({
             tabBarButton: () => <NewListingButton onPress={() => navigation.navigate("New Listing")} />,
             tabBarIcon:({color, size}) => <MaterialCommunityIcons name="plus-circle" color={color} size={size} />})}
-        />
+        /> */}
+        <Tab.Screen 
+        name="Camera" 
+        component={Camera}
+        options={({navigation}) => ({
+            tabBarButton: () => <OpenCameraButton onPress={() => navigation.navigate("Camera")} />,
+            tabBarIcon:({color, size}) => <MaterialCommunityIcons name="camera" color={color} size={size} />})}
+        /> 
         <Tab.Screen 
         name="Messages" 
         component={MessagesScreen} 

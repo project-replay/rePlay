@@ -16,6 +16,8 @@ import Screen from '../components/Screen';
 
 // Assets
 import ReplayLogo from '../assets/replay-bouncy-text.gif';
+import AppNavigator from '../navigation/AppNavigator';
+import BrowsingFeedScreen from './BrowsingFeedScreen';
 
 function WelcomeScreen({ navigation }) {
 	return (
@@ -91,7 +93,10 @@ function WelcomeScreen({ navigation }) {
 
 				<View style={styles.loginContainer}>
 					<AppText children={'Already have an account? '} style={styles.text} />
-					<TouchableOpacity>
+					<TouchableOpacity
+					onPress={() => navigation.navigate('Login')}
+					>
+					
 						<AppText
 							children='Log in here'
 							style={[styles.text, styles.loginText]}
@@ -99,10 +104,13 @@ function WelcomeScreen({ navigation }) {
 					</TouchableOpacity>
 				</View>
 
-				<TouchableOpacity>
+				<TouchableOpacity
+				onPress={() => navigation.navigate("Feed")}
+				>
 					<AppText
 						children='Continue as guest'
 						style={[styles.text, styles.guestText]}
+						
 					/>
 				</TouchableOpacity>
 			</ScrollView>

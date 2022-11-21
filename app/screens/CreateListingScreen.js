@@ -1,9 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Image, Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Image, Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import colors from '../config/colors';
 import { AppStateContext } from '../../App';
 import ReplayLogo from '../assets/svg/ReplayLogo';
 import * as Yup from 'yup';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 // Components
 import AppButton from '../components/AppButton';
@@ -17,6 +18,7 @@ import Screen from '../components/Screen';
 import PickerItem from '../components/PickerItem';
 import SubmitButton from '../components/SubmitButton';
 import AppPicker from '../components/AppPicker';
+import Camera from '../components/Camera'
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().label('Title'),

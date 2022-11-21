@@ -3,11 +3,11 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import colors from '../config/colors';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-function NewListingButton({onPress}) {
+function OpenCameraButton({onPress}) {
     return (
         <TouchableOpacity onPress={onPress}>
         <View style={styles.container}>
-            <MaterialCommunityIcons name="plus-circle" color={colors.white} size={30} />
+            <MaterialCommunityIcons name="camera" color={colors.white} size={30} />
         </View>
         </TouchableOpacity>
     );
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default NewListingButton;
+export default OpenCameraButton;

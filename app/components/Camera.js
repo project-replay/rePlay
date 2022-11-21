@@ -1,19 +1,12 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import {
-	StyleSheet,
-	Text,
-	SafeAreaView,
-	Button,
-	Image,
-	TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, SafeAreaView, Button, Image, TouchableOpacity,} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Camera } from 'expo-camera';
 import { Ionicons } from '@expo/vector-icons';
 import * as MediaLibrary from 'expo-media-library';
 import { AppStateContext } from '../../App';
 
-export default function App() {
+export default function App({navigation}) {
 	const cameraRef = useRef();
 	const [hasCameraPermission, setHasCameraPermission] = useState();
 	const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
@@ -97,7 +90,7 @@ export default function App() {
 					source={{ uri: 'data:image/jpg;base64,' + photo.base64 }}
 				/>
 				{hasMediaLibraryPermission ? (
-					<Button title='Save' onPress={savePhoto} />
+					<Button title='Save' onPress={() => {savePhoto; navigation.navigate('New Listing')}}/>
 				) : undefined}
 				<Button title='Discard' onPress={() => setPhoto(undefined)} />
 			</SafeAreaView>

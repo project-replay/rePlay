@@ -41,7 +41,7 @@ function BrowsingFeedScreen() {
 					placeholder='Filter'
 				/>
 
-				<TouchableOpacity
+				{/* <TouchableOpacity
 					style={[styles.userListingNotification, styles.border]}>
 					<Image
 						style={[styles.userListingImage, styles.border]}
@@ -58,7 +58,7 @@ function BrowsingFeedScreen() {
 						size={50}
 						color={colors.secondary}
 					/>
-				</TouchableOpacity>
+				</TouchableOpacity> */}
 
 				<AppText children='Shop by categories' style={styles.header} />
 				<View style={styles.categoryImageContainer}>

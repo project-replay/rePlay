@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native'
 import AppButton from '../components/AppButton';
 import AppTextInput from '../components/AppTextInput';
@@ -7,10 +7,9 @@ import ReplayLogo from '../assets/svg/ReplayLogo';
 import colors from '../config/colors';
 import Train from '../assets/svg/Train'
 import ListItemSeperator from '../components/ListItemSeperator';
+import {Formik} from 'formik';
 
 function LoginScreen(props) {
-const [email, setEmail] = useState();
-const [password, setPassword] = useState();
 
     return (
         <Screen style={styles.container}>
@@ -21,12 +20,20 @@ const [password, setPassword] = useState();
             <View style={styles.train}>
                 <Train />
             </View>
-            <AppTextInput
+
+            <Formik
+            initialValues={{email: "", password: ""}}
+            onSubmit={values => console.log(values)}
+            >
+                
+                {({ handleChange, handleSubmit}) => (
+                <>
+                    <AppTextInput
             autoCapitalize="none"
             autoCorrect={false}
             icon="email"
             keyboardType="email-address"
-            onChangeText={text => setEmail(text)}
+            onChangeText={handleChange("email")}
             placeholder="Email"
             textContentType="emailAddress"
             />
@@ -34,16 +41,21 @@ const [password, setPassword] = useState();
             autoCapitalize="none"
             autoCorrect={false}
             icon="lock"
-            onChangeText={text => setPassword(text)}
+            onChangeText={handleChange("password")}
             placeholder="Password"
             secureTextEntry
             textContentType="password"
             />
             <AppButton style={styles.text}
             title="Login"
-            onPress={() => console.log(email, password)}
+            onPress={handleSubmit}
             bgColor= "primary"
             />
+                </>
+                )}
+                
+            </Formik>
+            
         </Screen>
     );
 }

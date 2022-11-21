@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     price: {
-        color: colors.primary,
+        color: "green",
         fontWeight: "bold",
         fontSize: 20,
         marginVertical: 10,

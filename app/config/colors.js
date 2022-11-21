@@ -6,4 +6,5 @@ export default {
 	medium: '#63799a', // text blue
 	light: '#fef9f4', // nimbus
 	danger: '#ff5252',
+	blue: '#63799a', // slate blue
 };

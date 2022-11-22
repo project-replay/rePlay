@@ -5,6 +5,8 @@ GA Hackathon (11/16 - 11/21) Team 1
 ## Description
 **rePlay** is a network for parents and guardians that allows them to buy, sell, or trade unwanted items – such as toys, clothes, maternity products, and other things kids are constantly outgrowing. This is all in an effort to reduce the number of wasted materials sent to landfills or that negatively impact the environment if not discarded properly.
 
+## Design Tools
+
 ---
 - Figma File: https://www.figma.com/file/7joQQDsPgesCvx6UFTqTsm/rePlay-Handoff?node-id=815%3A933&t=IQEu9rhmeAmMT9oO-0
 ---

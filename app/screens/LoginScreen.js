@@ -8,14 +8,13 @@ import colors from '../config/colors';
 // Components
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
-import ListItemSeparator from '../components/ListItemSeparator';
+import PageHeaderNoBell from '../components/PageHeaderNoBell';
 import Screen from '../components/Screen';
 
 // Assets
 import AppForm from '../components/AppForm';
 import AppFormField from '../components/AppFormField';
 import CarToy from '../assets/png/car-toy.png';
-import ReplayLogo from '../assets/png/replay-logo.png';
 import SubmitButton from '../components/SubmitButton';
 
 const validationSchema = Yup.object().shape({
@@ -45,8 +44,7 @@ function LoginScreen({ navigation }) {
 
 	return (
 		<Screen style={styles.container}>
-			<Image style={styles.logo} source={ReplayLogo} />
-			<ListItemSeparator />
+			<PageHeaderNoBell />
 			<Image style={styles.carToy} source={CarToy} />
 			<AppText children={'Log into your account'} style={styles.headerText} />
 
@@ -106,7 +104,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 	},
 	cancelButton: {
-		marginTop: 10,
+		marginTop: 7,
 		fontSize: 17,
 		fontWeight: 'normal',
 		color: colors.primary,
@@ -130,7 +128,9 @@ const styles = StyleSheet.create({
 		marginBottom: 15,
 	},
 	submitButton: {
+		textAlign: 'center',
 		padding: 7,
+		width: 275,
 		fontSize: 17,
 	},
 });

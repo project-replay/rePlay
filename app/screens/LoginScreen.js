@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Dimensions, Image, StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Formik } from 'formik';
+import React, { useState } from 'react';
+import { Image, StyleSheet, View } from 'react-native';
 import { auth } from '../../firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import * as Yup from 'yup';
@@ -14,36 +12,20 @@ import ListItemSeparator from '../components/ListItemSeparator';
 import Screen from '../components/Screen';
 
 // Assets
+import AppForm from '../components/AppForm';
+import AppFormField from '../components/AppFormField';
 import CarToy from '../assets/png/car-toy.png';
 import ReplayLogo from '../assets/png/replay-logo.png';
-import ErrorMessage from '../components/ErrorMessage';
-import AppFormField from '../components/AppFormField';
 import SubmitButton from '../components/SubmitButton';
-import AppForm from '../components/AppForm';
 
 const validationSchema = Yup.object().shape({
 	email: Yup.string().required().email().label('Email'),
 	password: Yup.string().required().min(4).label('Password'),
 });
 
-function LoginScreen(props) {
+function LoginScreen({ navigation }) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
-	const navigation = useNavigation();
-
-	// If user is logged in, navigate them to Home
-	useEffect(() => {
-		const unsubscribe = auth.onAuthStateChanged((user) => {
-			if (user) {
-				navigation.navigate('Home');
-			}
-		});
-
-		return () => {
-			unsubscribe();
-		};
-	}, []);
 
 	// Log in user via email
 	const handleEmailLogin = async () => {
@@ -53,9 +35,11 @@ function LoginScreen(props) {
 				email,
 				password
 			);
-			// const user = userCredentials.user;
+			if (userCredentials) {
+				navigation.navigate('Feed');
+			}
 		} catch (error) {
-			alert(error.message);
+			alert(`Something went wrong.\nPlease try again.`);
 		}
 	};
 
@@ -71,39 +55,49 @@ function LoginScreen(props) {
 				onSubmit={handleEmailLogin}
 				validationSchema={validationSchema}>
 				<AppFormField
-					autoCapitalize='none'
+					autoCapitalize={false}
 					autoCorrect={false}
 					icon='email'
 					keyboardType='email-address'
 					name='email'
 					placeholder='Email'
 					placeholderTextColor={colors.primary}
+					value={email}
+					onChangeText={(text) => setEmail(text)}
 					textContentType='email'
 				/>
 
 				<AppFormField
-					autoCapitalize='none'
+					autoCapitalize={false}
 					autoCorrect={false}
 					icon='lock'
 					name='password'
 					placeholder='Password'
 					placeholderTextColor={colors.primary}
+					value={password}
+					onChangeText={(text) => setPassword(text)}
 					secureTextEntry
 					textContentType='password'
 				/>
 
 				<View style={styles.buttonContainer}>
-					<SubmitButton title='Log In' style={styles.submitButton} />
+					<SubmitButton
+						title='Log In'
+						style={styles.submitButton}
+						onPress={handleEmailLogin}
+					/>
 					<AppButton
 						title='Cancel'
 						bgColor='light'
 						style={styles.cancelButton}
+						onPress={() => navigation.navigate('Welcome')}
 					/>
 				</View>
 			</AppForm>
 		</Screen>
 	);
 }
+
 const styles = StyleSheet.create({
 	buttonContainer: {
 		display: 'flex',

@@ -1,17 +1,24 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import {StyleSheet, Text, SafeAreaView, Button, Image, TouchableOpacity,} from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import {
+	Button,
+	Image,
+	SafeAreaView,
+	StyleSheet,
+	Text,
+	TouchableOpacity,
+} from 'react-native';
 import { Camera } from 'expo-camera';
-import { Ionicons } from '@expo/vector-icons';
 import * as MediaLibrary from 'expo-media-library';
+import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
 import { AppStateContext } from '../../App';
 
-export default function App({navigation}) {
+export default function App({ navigation }) {
 	const cameraRef = useRef();
 	const [hasCameraPermission, setHasCameraPermission] = useState();
 	const [hasMediaLibraryPermission, setHasMediaLibraryPermission] = useState();
 	const [photo, setPhoto] = useState();
-	const { imageUrl, setImageUrl } = useContext(AppStateContext);
+	const { setImageUrl } = useContext(AppStateContext);
 
 	useEffect(() => {
 		(async () => {
@@ -22,10 +29,6 @@ export default function App({navigation}) {
 			setHasMediaLibraryPermission(mediaLibraryPermission.status === 'granted');
 		})();
 	}, []);
-
-	useEffect(()=> {
-		// NAVIGATE TO CREATELISTINGSCREEN
-	}, [imageUrl])
 
 	if (hasCameraPermission === undefined) {
 		return <Text>Requesting permissions...</Text>;
@@ -90,7 +93,13 @@ export default function App({navigation}) {
 					source={{ uri: 'data:image/jpg;base64,' + photo.base64 }}
 				/>
 				{hasMediaLibraryPermission ? (
-					<Button title='Save' onPress={() => {savePhoto; navigation.navigate('New Listing')}}/>
+					<Button
+						title='Save'
+						onPress={() => {
+							savePhoto();
+							navigation.navigate('New Listing');
+						}}
+					/>
 				) : undefined}
 				<Button title='Discard' onPress={() => setPhoto(undefined)} />
 			</SafeAreaView>

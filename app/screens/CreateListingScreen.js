@@ -1,5 +1,12 @@
 import { useContext, useEffect, useRef, useState } from 'react';
-import { Image, Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import {
+	Image,
+	Text,
+	View,
+	StyleSheet,
+	ScrollView,
+	TouchableOpacity,
+} from 'react-native';
 import colors from '../config/colors';
 import { AppStateContext } from '../../App';
 import ReplayLogo from '../assets/svg/ReplayLogo';
@@ -18,7 +25,7 @@ import Screen from '../components/Screen';
 import PickerItem from '../components/PickerItem';
 import SubmitButton from '../components/SubmitButton';
 import AppPicker from '../components/AppPicker';
-import Camera from '../components/Camera'
+import Camera from '../components/Camera';
 
 const validationSchema = Yup.object().shape({
 	title: Yup.string().required().label('Title'),
@@ -33,7 +40,7 @@ const categories = [
 	{ label: 'Toddler Clothing', value: '5' },
 ];
 
-function CreateListingScreen({navigation}) {
+function CreateListingScreen({ navigation }) {
 	const [category, setCategory] = useState();
 	const { imageUrl } = useContext(AppStateContext);
 
@@ -47,7 +54,7 @@ function CreateListingScreen({navigation}) {
 				<ListItemSeparator /> */}
 				<PageHeaderWithBell />
 				<AppText children={'Create Listing'} style={styles.headerText} />
-				<Image source={imageUrl} style={styles.image} />
+				<Image source={{ uri: `${imageUrl}` }} style={styles.image} />
 
 				<AppForm
 					initialValues={{ email: '', password: '', name: '' }}
@@ -83,31 +90,27 @@ function CreateListingScreen({navigation}) {
 					/>
 					<AppFormField name='tags' placeholder='Tags' textContentType='tags' />
 
-						
-						<AppFormField
-                            name="listingType"
-							placeholder='Listing Type'
-							textContentType='listingType'
-						/>
-						<AppFormField
-                            name="condition"
-							placeholder='Condition'
-							textContentType='condition'
-						/>
-						<AppFormField
-                            name="description"
-							placeholder='Description'
-							textContentType='description'
-						/>
-						<AppFormField
-                            name="tags"
-							placeholder='Tags'
-							textContentType='tags'
-						/>
+					<AppFormField
+						name='listingType'
+						placeholder='Listing Type'
+						textContentType='listingType'
+					/>
+					<AppFormField
+						name='condition'
+						placeholder='Condition'
+						textContentType='condition'
+					/>
+					<AppFormField
+						name='description'
+						placeholder='Description'
+						textContentType='description'
+					/>
+					<AppFormField name='tags' placeholder='Tags' textContentType='tags' />
 
-                        <SubmitButton title="Submit"
+					<SubmitButton
+						title='Submit'
 						onPress={() => navigation.navigate('After Listing')}
-						/>
+					/>
 				</AppForm>
 			</ScrollView>
 		</Screen>

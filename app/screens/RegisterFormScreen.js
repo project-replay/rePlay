@@ -154,7 +154,9 @@ const RegisterFormScreen = ({ navigation }) => {
 						/>
 						<AppButton
 							title='Cancel'
-							onPress={() => {}}
+							onPress={() => {
+								navigation.navigate('Welcome');
+							}}
 							bgColor='light'
 							style={styles.cancelButton}
 						/>

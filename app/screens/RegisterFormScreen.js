@@ -19,7 +19,7 @@ import Crayons from '../assets/png/crayons.png';
 import PageHeaderNoBell from '../components/PageHeaderNoBell';
 import Screen from '../components/Screen';
 
-const RegisterFormScreen = ({ navigation }) => {
+function RegisterFormScreen({ navigation }) {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [username, setUsername] = useState('');
@@ -165,7 +165,7 @@ const RegisterFormScreen = ({ navigation }) => {
 			</ScrollView>
 		</Screen>
 	);
-};
+}
 
 const styles = StyleSheet.create({
 	buttonContainer: {

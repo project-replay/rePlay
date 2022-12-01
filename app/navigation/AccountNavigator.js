@@ -5,7 +5,6 @@ import MessagesScreen from '../screens/MessagesScreen';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import ListingsScreen from '../screens/ListingsScreen';
 
-
 const Stack = createStackNavigator();
 
 const AccountNavigator =() => (

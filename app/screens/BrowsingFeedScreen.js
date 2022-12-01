@@ -1,8 +1,5 @@
-import React, { useContext } from 'react';
-import { Image, ScrollView, StyleSheet, View } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { AppStateContext } from '../../App';
-import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import colors from '../config/colors';
 
 // Components
@@ -10,7 +7,6 @@ import AppText from '../components/AppText';
 import AppTextInput from '../components/AppTextInput';
 import ListItemSquare from '../components/ListItemSquare';
 import PageHeaderWithBell from '../components/PageHeaderWithBell';
-import PageFooter from '../components/PageFooter';
 import Screen from '../components/Screen';
 
 // Assets
@@ -20,7 +16,6 @@ import Crib from '../assets/png/crib.png';
 import Xylophone from '../assets/png/xylophone.png';
 
 function BrowsingFeedScreen() {
-	const { imageUrl } = useContext(AppStateContext);
 
 	return (
 		<Screen style={styles.container}>
@@ -40,25 +35,6 @@ function BrowsingFeedScreen() {
 					value={''}
 					placeholder='Filter'
 				/>
-
-				{/* <TouchableOpacity
-					style={[styles.userListingNotification, styles.border]}>
-					<Image
-						style={[styles.userListingImage, styles.border]}
-						source={{
-							uri: 'https://res.cloudinary.com/dwppzi7rk/image/upload/v1669005468/z1btqpgaqb5azlxi92nc.jpg',
-						}}
-					/>
-					<AppText
-						children={'Your item has been listed.\nClick here to view it.'}
-						style={styles.userListingText}
-					/>
-					<Ionicons
-						name='checkmark-circle-outline'
-						size={50}
-						color={colors.secondary}
-					/>
-				</TouchableOpacity> */}
 
 				<AppText children='Shop by categories' style={styles.header} />
 				<View style={styles.categoryImageContainer}>
